@@ -5,9 +5,14 @@ Found a much more pleasing way...
 On touchend event, set the pivot to the center of the canvas.
 This is simple and very intuitive for navigation.
 
-Try the demo on your iPad or Android Tablet here:
+Try the demo on your iPad or Android Tablet.  Click the link here:
 
 DEMO: https://wallabyway.github.io/forge-pinch-zoom
+
+or scan the QRCode:
+
+<img width="128" alt="qrcode" src="https://user-images.githubusercontent.com/440241/72190986-c24aca80-33b5-11ea-9773-c23c44957fff.png">
+
 
 ![navis](https://user-images.githubusercontent.com/440241/70171493-a9971880-1683-11ea-9f66-0c981f007333.jpg)
 
