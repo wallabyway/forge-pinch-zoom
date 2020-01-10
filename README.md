@@ -1,6 +1,15 @@
 # forge-pinch-zoom
 customized iPad/IPhone/Android pinch zoom touch controls for ForgeViewer
 
+Found a much more pleasing way...
+On touchend event, set the pivot to the center of the canvas.
+This is simple and very intuitive for navigation.
+
+Try the demo on your iPad or Android Tablet here:
+
+DEMO: 
+
+
 ### Goal:
 
 - Pinch zoom sets zoom point to pivot. 
