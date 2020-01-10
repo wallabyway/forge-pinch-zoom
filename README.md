@@ -7,7 +7,9 @@ This is simple and very intuitive for navigation.
 
 Try the demo on your iPad or Android Tablet here:
 
-DEMO: 
+DEMO: https://wallabyway.github.io/forge-pinch-zoom
+
+![navis](https://user-images.githubusercontent.com/440241/70171493-a9971880-1683-11ea-9f66-0c981f007333.jpg)
 
 
 ### Goal:
