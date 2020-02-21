@@ -44,14 +44,15 @@ function loadModel(urn) {
             doc.downloadAecModelData();
             var viewables = doc.getRoot().getDefaultGeometry();
             viewer.loadDocumentNode(doc, viewables).then( onLoadFinished );
-            Autodesk.Viewing.TEXTURES_LOADED_EVENT
+
             viewer.addEventListener( Autodesk.Viewing.TEXTURES_LOADED_EVENT, ()=>{
                 viewer.getExtension("Autodesk.BimWalk").activate();
             });
         });
     });
 
-    function onLoadFinished() {        
+    function onLoadFinished() {
+        
     }
 }
 
