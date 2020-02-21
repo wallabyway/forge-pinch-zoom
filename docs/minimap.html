@@ -1,0 +1,65 @@
+<header>
+    <title>mini-map extension demo</title>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+	<link rel="shortcut icon" href="#">
+    <link rel="stylesheet" href="https://developer.api.autodesk.com/modelderivative/v2/viewers/7.*/style.min.css" type="text/css">
+</header>
+
+<body style="margin:0">
+    <div id="forgeViewer"></div>
+</body>
+
+<script src="https://xf79h9aa3l.execute-api.us-west-2.amazonaws.com/toolkit2/api/_adsk.js"></script>
+<script src=" https://developer.api.autodesk.com/modelderivative/v2/viewers/7.4/viewer3D.js"></script>
+
+<script>
+let viewer = null;
+
+
+function onGestureEnd() {
+    var hitTest = viewer.clientToWorld(window.innerWidth/2, window.innerHeight/2, true);
+    viewer.navigation.setPivotPoint(hitTest.point);
+}
+
+function loadModel(urn) {
+
+    const options = {
+        env: 'AutodeskProduction',
+        accessToken: _adsk.token.access_token,
+    };
+
+    Autodesk.Viewing.Initializer(options, () => {
+
+        const div = document.getElementById('forgeViewer');
+
+        const config = { extensions:[ 
+            "Autodesk.AEC.Minimap3DExtension",
+            "Autodesk.AEC.LevelsExtension", 
+        ]};
+
+        viewer = new Autodesk.Viewing.Private.GuiViewer3D(div, config);
+        viewer.start();
+        Autodesk.Viewing.Document.load(`urn:${urn}`, (doc) => {
+            doc.downloadAecModelData();
+            var viewables = doc.getRoot().getDefaultGeometry();
+            viewer.loadDocumentNode(doc, viewables).then( onLoadFinished );
+            Autodesk.Viewing.TEXTURES_LOADED_EVENT
+            viewer.addEventListener( Autodesk.Viewing.TEXTURES_LOADED_EVENT, ()=>{
+                viewer.getExtension("Autodesk.BimWalk").activate();
+            });
+        });
+    });
+
+    function onLoadFinished() {        
+    }
+}
+
+window.addEventListener('DOMContentLoaded', ()=>
+    loadModel("dXJuOmFkc2sub2JqZWN0czpvcy5vYmplY3Q6dnJwYXJ0eTEvcmFjX2FkdmFuY2VkX3NhbXBsZV9wcm9qZWN0LnJ2dA")
+);
+
+
+</script>
+
+
